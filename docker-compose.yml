@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  # ==========================================
+  # Backend: FastAPI + YOLO Inference Engine
+  # ==========================================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: edge_vision_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - CAMERA_SOURCE=0
+      - ENABLE_MOCK_FALLBACK=true
+      - MODEL_PATH=yolov8n.pt
+      - INFERENCE_BACKEND=ultralytics
+      - WS_JPEG_QUALITY=75
+      - WS_TARGET_FPS=30
+    volumes:
+      - ./models:/app/models
+    # Pass host video devices for physical webcams
+    devices:
+      - /dev/video0:/dev/video0
+    # Uncomment for NVIDIA GPU / Jetson acceleration
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # ==========================================
+  # Frontend: React (Vite) Telemetry Dashboard
+  # ==========================================
+  frontend:
+    image: node:20-alpine
+    container_name: edge_vision_frontend
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host"
+    depends_on:
+      - backend
+
+networks:
+  default:
+    name: edge_vision_network
