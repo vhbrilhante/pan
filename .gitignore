@@ -1,0 +1,103 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+
+# =========================
+# Logs / temporary files
+# =========================
+*.log
+*.tmp
+*.temp
+*.part
+.cache/
+
+
+# =========================
+# Frontend / Node
+# =========================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# =========================
+# Dataset / videos / frames
+# =========================
+videos/
+frames/
+dataset/
+datasets/
+dataset_raw/
+data/raw/
+data/processed/
+
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+
+# =========================
+# ML / YOLO
+# =========================
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+*.torchscript
+*.ckpt
+
+runs/
+weights/
+checkpoints/
+wandb/
+
+
+# =========================
+# Benchmark outputs
+# =========================
+benchmark_results/
+baseline_*.txt
+*.csv
+
+
+# =========================
+# IDE / OS
+# =========================
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
+desktop.ini
