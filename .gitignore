@@ -33,6 +33,8 @@ htmlcov/
 *.temp
 *.part
 .cache/
+temp/
+tmp/
 
 
 # =========================
@@ -50,16 +52,37 @@ pnpm-debug.log*
 
 
 # =========================
-# Dataset / videos / frames
+# Datasets / raw data
 # =========================
 videos/
 frames/
+
 dataset/
 datasets/
 dataset_raw/
+
+external_data/
+
+aifloodsense_yolo/
+aifloodsense_dataset/
+
+annotation_pilot/
+annotation_validation/
+
 data/raw/
 data/processed/
 
+
+# =========================
+# Dataset archives
+# =========================
+dataset_raw.zip
+aifloodsense_dataset.zip
+
+
+# =========================
+# Video / media files
+# =========================
 *.mp4
 *.avi
 *.mov
@@ -89,7 +112,6 @@ wandb/
 # =========================
 benchmark_results/
 baseline_*.txt
-*.csv
 
 
 # =========================
